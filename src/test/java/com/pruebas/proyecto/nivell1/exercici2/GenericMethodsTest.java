@@ -16,8 +16,8 @@ public class GenericMethodsTest {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         PrintStream originalOut = System.out;
 
-        try {
-            System.setOut(new PrintStream(output));
+        try (PrintStream capturedOut = new PrintStream(output)) {
+            System.setOut(capturedOut);
             new GenericMethods().printElements(person, text, randomAge);
         } finally {
             System.setOut(originalOut);
@@ -40,8 +40,8 @@ public class GenericMethodsTest {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         PrintStream originalOut = System.out;
 
-        try {
-            System.setOut(new PrintStream(output));
+        try (PrintStream capturedOut = new PrintStream(output)) {
+            System.setOut(capturedOut);
             new GenericMethods().printElements(randomAge, person, text);
         } finally {
             System.setOut(originalOut);
