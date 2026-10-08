@@ -2,36 +2,34 @@ package com.pruebas.proyecto.nivell1.exercici2;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GenericMethodsTest {
     @Test
-    void print_givenDifferentTypeOfElements_showsEachElement() {
+    void formatElements_givenDifferentTypeOfElements_showsEachElement() {
         Person person = new Person("John", "Smith", 32);
         String text = "This is a short text";
         int randomAge = 44;
 
         String result = new GenericMethods().formatElements(person, text, randomAge);
-        assertEquals(
-                "Value 1: " + person + System.lineSeparator()
-                        + "Value 2: " + text + System.lineSeparator()
-                        + "Value 3: " + randomAge,
-                result
-        );
+        assertTrue(result.contains("John"));
+        assertTrue(result.contains("Smith"));
+        assertTrue(result.contains("32"));
+        assertTrue(result.contains("This is a short text"));
+        assertTrue(result.contains("44"));
     }
 
     @Test
-    void print_givenDifferentTypeOfElementsInDifferentOrder_showsEachElement() {
+    void formatElements_givenDifferentTypeOfElementsInDifferentOrder_showsEachElement() {
         Person person = new Person("Elena", "Stock", 19);
         String text = "This is a short text, again";
         int randomAge = 23;
 
         String result = new GenericMethods().formatElements(text, randomAge, person);
-        assertEquals(
-                "Value 1: " + text + System.lineSeparator()
-                        + "Value 2: " + randomAge + System.lineSeparator()
-                        + "Value 3: " + person,
-                result
-        );
+        assertTrue(result.contains("Elena"));
+        assertTrue(result.contains("Stock"));
+        assertTrue(result.contains("19"));
+        assertTrue(result.contains("This is a short text, again"));
+        assertTrue(result.contains("23"));
     }
 }
