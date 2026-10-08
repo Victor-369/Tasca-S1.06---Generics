@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class NoGenericMethodsTest {
     @Test
-    void constructor_givenThreeValues_storesEachInItsCorrespondingElement() {
+    void getElement_givenThreeValues_storesEachInItsCorrespondingElement() {
         NoGenericMethods values = new NoGenericMethods("Red", "Green", "Blue");
 
         assertAll(
@@ -18,7 +18,7 @@ class NoGenericMethodsTest {
     }
 
     @Test
-    void constructor_givenValuesInDifferentOrder_storesThemInThatOrder() {
+    void getElement_givenValuesInDifferentOrder_storesThemInThatOrder() {
         NoGenericMethods values = new NoGenericMethods("Blue", "Red", "Green");
 
         assertAll(
