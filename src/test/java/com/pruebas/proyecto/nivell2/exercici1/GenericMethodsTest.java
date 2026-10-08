@@ -2,7 +2,6 @@ package com.pruebas.proyecto.nivell2.exercici1;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GenericMethodsTest {
