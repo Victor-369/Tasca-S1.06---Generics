@@ -12,7 +12,8 @@ each one. Call it from `Main` with a `Person`, a `String` and a numeric value, a
 `Person` stores the person's name, surname and age. Its `toString()` method formats those fields so the object can be printed with its data.
 
 `GenericMethods.printElements()` prints the three arguments with labels. `Main` calls it with a `Person`, a `String` and an `int`; Java boxes the primitive
-integer for the generic method. The method uses one type parameter for all three arguments, with Java inferring a common type for the supplied values.
+integer for the generic method. The method declares a separate type parameter for each argument, so the arguments can have different types without
+requiring Java to infer one common type for all three.
 
 ## Tests
 

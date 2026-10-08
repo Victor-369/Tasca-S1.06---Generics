@@ -19,9 +19,9 @@ public final <T> void printAll(T... values);
 common type for the values in each call.
 
 Generic varargs are implemented with an array whose component type is not reified at runtime. This can lead to heap pollution, where the array contains
-values of a type that does not match its apparent component type, and may produce unchecked warnings. `@SafeVarargs` is used here because the method only
-reads and prints the values; it does not store values in or expose the array. The annotation should only be used when the method implementation is safe in
-this way.
+values of a type that does not match its apparent component type, and can cause unchecked warnings. `@SafeVarargs` suppresses the warning for this method;
+it does not make an unsafe implementation safe. It is appropriate here because the method only reads and prints the values; it does not store values in or
+expose the array. The annotation should only be used when the method implementation is safe in this way.
 
 ## Tests
 
