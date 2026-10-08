@@ -4,30 +4,31 @@ This exercise demonstrates a generic method that accepts a variable number of ar
 
 ## Requirements
 
-Adapt the previous exercise so that `printAll()` accepts any number of generic arguments, including values of different types, and prints them in order.
+Adapt the previous exercise so that the generic varargs methods accept any number of arguments, including values of different types, and format them in
+order. `Main` demonstrates printing the result.
 
 ## Implementation
 
-`GenericMethods.printAll()` declares a generic varargs parameter:
+`GenericMethods.formatAll()` declares a generic varargs parameter and returns the labeled values as a `String`:
 
 ```java
 @SafeVarargs
-public final <T> void printAll(T... values);
+public final <T> String formatAll(T... values);
 ```
 
-`Main` calls the method with a `Person`, a `String` and an integer. Java boxes the integer to `Integer`. The arguments may have different types; Java infers a
-common type for the values in each call.
+`printAll()` prints the result of `formatAll()`. `Main` calls it with a `Person`, a `String` and an integer. Java boxes the integer to `Integer`. The
+arguments may have different types; Java infers a common type for the values in each call. `formatAll()` returns an empty string when called without
+arguments and appends a line separator after each formatted value.
 
 Generic varargs are implemented with an array whose component type is not reified at runtime. This can lead to heap pollution, where the array contains
-values of a type that does not match its apparent component type, and can cause unchecked warnings. `@SafeVarargs` suppresses the warning for this method;
-it does not make an unsafe implementation safe. It is appropriate here because the method only reads and prints the values; it does not store values in or
-expose the array. The annotation should only be used when the method implementation is safe in this way.
+values of a type that does not match its apparent component type, and can cause unchecked warnings. `@SafeVarargs` suppresses the warning for each
+annotated method; it does not make an unsafe implementation safe. It is appropriate here because the methods only read the values to build or print the
+result, and do not store values in or expose the array. The annotation should only be used when the method implementation is safe in this way.
 
 ## Tests
 
-`GenericMethodsTest` captures standard output and checks that mixed-type arguments are printed in order, including when their order changes. It also
-checks calls with one argument and with no arguments. The shared `captureOutput()` helper runs each method call while standard output is
-captured. Run the tests from the project root with:
+`GenericMethodsTest` checks the string returned by `formatAll()` for mixed-type arguments, including when their order changes, and for zero, one and more
+than three arguments. These tests compare the returned value directly and do not capture standard output. Run the tests from the project root with:
 
 ```sh
 mvn test
